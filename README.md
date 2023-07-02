@@ -1,5 +1,5 @@
 # SHIKA (CS50 Final Project)
-#### Video Demo:
+#### Video Demo: https://youtu.be/DUgePg9MTV8
 
 ## Description
 This is my final project for CS50, written in Javascript. It is a simple web game where that you can interact with Shika the Shiba.
