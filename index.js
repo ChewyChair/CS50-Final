@@ -33,6 +33,29 @@ class Shiba {
         this.bork = bork;
     }
 
+    draw() {
+        switch(this.mode) {
+            case "chase":
+                // fallthrough
+            case "chaseBall":
+                // fallthrough
+            case "explore":
+                this.drawMotion();
+                break;
+            case "idle":
+                // fallthrough
+            case "lie":
+                // fallthrough
+            case "exploreidle":
+                this.drawStandard(15);
+                break;
+            case "sleep":
+                this.drawStandard(25);
+                break;
+            default:
+        }
+    }
+
     drawMotion() {
         this.ticks++;
         if (this.ticks % 12 == 0) {
@@ -181,7 +204,6 @@ class Shiba {
                 ball.dz = 0;
             }
         }
-        this.drawMotion();
     }
 
     chaseBall(dx, dy) {
@@ -226,8 +248,6 @@ class Shiba {
                 }
             }
         }
-
-        this.drawMotion();
     }
 
     explore(x, y, dx, dy) {
@@ -269,8 +289,6 @@ class Shiba {
             this.resetMode();
             this.mode = "exploreidle";
         }
-
-        this.drawMotion();
     }
 
     idle() {
@@ -294,7 +312,6 @@ class Shiba {
             this.row = 0;
             this.shadowCol = 0;
         }
-        this.drawStandard(15);
     }
 
     exploreidle() {
@@ -321,7 +338,6 @@ class Shiba {
             this.row = 0;
             this.shadowCol = 0;
         }
-        this.drawStandard(15);
     }
 
     lie() {
@@ -351,7 +367,6 @@ class Shiba {
             this.row = 4;
             this.shadowCol = 2;
         }
-        this.drawStandard(15);
     }
 
     sleep() {
@@ -369,7 +384,6 @@ class Shiba {
             this.resetMode();
             this.mode = "lie";
         }
-        this.drawStandard(25);
     }
 }
 
@@ -637,10 +651,11 @@ function animate() {
     c.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     c.fillStyle = "green";
     c.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    shiba.update();
     ball.update();
     drawDirt();
     drawBackground();
-    shiba.update();
+    shiba.draw();
     drawForeground();
     drawHearts();
     requestAnimationFrame(animate);

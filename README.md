@@ -40,7 +40,7 @@ Added the wandering behaviour to make Shika more organic. This way, if you are i
 
 Usage of `pointerdown`, `pointerup`, `pointermove`, `pointerout` instead of `mousedown` or `touchdown` and their associated events: To make the game mobile friendly.
 
-Shika, the ball and grass also render in order based on their y position. Fun fact: When the ball is in Shika's mouth, it's actually elevated on its z-axis, thus rendering in front of him. :exclamation: There is a bug associated with this, documented below.
+Shika, the ball and grass also render in order based on their y position. Fun fact: When the ball is in Shika's mouth, it's actually elevated on its z-axis, thus rendering in front of him. :exclamation: ~~There is a bug associated with this, documented below.~~
 
 Grass is animated, and both grass and dirt patches are spawned randomly to give a more organic feel to the game.
 <br>
@@ -49,7 +49,7 @@ Grass is animated, and both grass and dirt patches are spawned randomly to give 
 ![image](readme/shibalie.gif)
 
 ### Bugs
-There are some graphical glitches with the grass and ball. When Shika passes them on the y-axis when moving downward, they will briefly flicker. It is probably due to the clumsy way that I implemented the rendering of these objects. However, the game is already cute enough and the flickering is not very noticeable so I'll leave it at that. :)
+~~There are some graphical glitches with the grass and ball. When Shika passes them on the y-axis when moving downward, they will briefly flicker. It is probably due to the clumsy way that I implemented the rendering of these objects. However, the game is already cute enough and the flickering is not very noticeable so I'll leave it at that. :)~~ This was caused by me stupidly updating and rendering Shika in the same function, instead of updating everything and rendering after. Oops.
 
 If you happen to be on the same x position as the ball when Shika picks it up he will run to you with the ball in the center of his body. This is a pretty easy fix but it looks really funny so I left it in.
 
